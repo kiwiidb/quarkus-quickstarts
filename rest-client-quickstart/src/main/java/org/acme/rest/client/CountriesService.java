@@ -4,10 +4,12 @@ import java.util.Set;
 import java.util.concurrent.CompletionStage;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+import org.jboss.resteasy.annotations.Body;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import io.smallrye.mutiny.Uni;
@@ -26,8 +28,8 @@ public interface CountriesService {
     @Produces("application/json")
     CompletionStage<Set<Country>> getByNameAsync(@PathParam String name);
 
-    @GET
+    @POST
     @Path("/name/{name}")
     @Produces("application/json")
-    Uni<Set<Country>> getByNameAsUni(@PathParam String name);
+    Uni<Set<Country>> getByNameAsUni(@PathParam String name, TestRequest test);
 }

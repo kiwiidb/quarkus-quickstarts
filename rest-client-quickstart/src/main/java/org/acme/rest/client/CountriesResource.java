@@ -39,6 +39,8 @@ public class CountriesResource {
     @Path("/name-uni/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Uni<Set<Country>> nameMutiny(@PathParam String name) {
-        return countriesService.getByNameAsUni(name);
+        TestRequest test = new TestRequest();
+        test.testProp = "hoi";
+        return countriesService.getByNameAsUni(name, test);
     }
 }
